@@ -4,7 +4,7 @@ import warnings
 
 #####
 # Usage: python cons_data.py <arg>
-# where <arg> is (y-intercept of line)/10
+# where <arg> is (y-intercept of line)*10
 # e.g. python cons_data.py 4 provides the summary for the curve y=0.4+0.6x
 #####
 
