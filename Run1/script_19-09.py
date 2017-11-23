@@ -1,3 +1,8 @@
+#####
+# Usage: python script_19-09.py <arg>
+# where <arg> for values 0 to 10 refers to (y-intercept of line)*10
+#####
+
 #  Notations followed:
 # 
 #  Nb,h: Number of healthy bacteria
