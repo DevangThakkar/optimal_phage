@@ -28,4 +28,4 @@ We consider two additional parameters to describe the environment:
 * Probability of good environment for phages: (*p<sub>1</sub>*)
 * Probability of good environment for bacteria: (*p<sub>2</sub>*)
 
-Our first approach was to observe the result of running Gillespie simulations on fixed curves of Probability of Lysogeny **P(lyso)** versus Multiplicity of Infection **MoI** for individual values of *p<sub>1</sub>* and *p<sub>2</sub>*.
+Our first approach was to observe the result of running Gillespie simulations on fixed curves of Probability of Lysogeny **P(lyso)** versus Multiplicity of Infection **MoI** for individual values of *p<sub>1</sub>* and *p<sub>2</sub>*. The code for this iteration is included in /Run1
