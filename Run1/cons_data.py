@@ -2,12 +2,21 @@ import numpy as np
 import sys
 import warnings
 
+#####
+# Usage: python cons_data.py <arg>
+# where <arg> is (y-intercept of line)/10
+# e.g. python cons_data.py 4 provides the summary for the curve y=0.4+0.6x
+#####
+
+# p1: Probability of good environment for phage
+#  p2: Probability of good environment for bacteria
 p1 = 0.3
 p2 = 0.2
 phagecount = []
 bactcount = []
 
 fname = ""
+# read file names
 
 if int(str(sys.argv[1])) == 0:
 	fname = 'p' + str(p1) + 'q' + str(p2) + "/result_0.0+1.0x.csv"
