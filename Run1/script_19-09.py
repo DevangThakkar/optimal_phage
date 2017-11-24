@@ -1,6 +1,7 @@
 #####
 # Usage: python script_19-09.py <arg>
 # where <arg> for values 0 to 10 refers to (y-intercept of line)*10
+# and for values 11 and 12 refers to y = x^2 and y = sqrt(x) respectively
 #####
 
 #  Notations followed:
