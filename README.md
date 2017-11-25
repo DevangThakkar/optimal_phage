@@ -36,3 +36,5 @@ Our next approach was a radical one - instead of running the entire Gillespie si
 * [alt_run2](../master/Run2/alt_run2): *lambda<sub>p</sub>* = 2, *lambda<sub>b</sub>* = 0.1
 * [alt_run3](../master/Run2/alt_run3): *lambda<sub>p</sub>* = 2, *lambda<sub>b</sub>* = 1.0
 * [alt_run4](../master/Run2/alt_run4): *lambda<sub>p</sub>* = 3, *lambda<sub>b</sub>* = 0.1
+
+The resulting graphical interpretations have been added [here](../master/graphs)
