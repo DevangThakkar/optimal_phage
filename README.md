@@ -38,6 +38,7 @@ Our next approach was a slightly radical one - instead of running the entire Gil
 * [alt_run4](../master/Run2/alt_run4): *lambda<sub>p</sub>* = 3, *lambda<sub>b</sub>* = 0.1
 
 The table below recapitulates the parameters used along with their description and range of values:
+
 | Parameter | Description | Value(s) |
 |:---------:|:----------- |:--------:|
 | *MoI*       | The ratio of total phages to bacteria in the system | [0.01,0.02,...,2.0] |
