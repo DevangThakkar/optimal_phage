@@ -50,3 +50,7 @@ The table below recapitulates the parameters used along with their description a
 | *p<sub>2</sub>* | probability of occurence of a good environment period for bacteria | [0.1,0.2,...,1.0] |
 
 The resulting graphical results have been added [here](../master/Run2/graphs)
+
+## Current work: 
+* Visualising the overall trends in a better manner
+* Selecting more appropriate values of the parameters and widening the range chosen
