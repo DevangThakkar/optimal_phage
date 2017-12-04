@@ -71,13 +71,13 @@ for moi in moi_range:
 				N_bi = long((N_bi + plyso*N_pfree)*np.exp(-lambda_b))
 				N_pfree = long(max(N_pfree + a*(1-plyso)*N_pfree + 1 * (N_bi + plyso*N_pfree)*np.exp(-lambda_b) - (plyso)*N_pfree,0))
 
-			if envp == 1 and envb == 1:
+			if envp == 0 and envb == 1:
 				
 				N_bh = long(max(N_bh + r*N_bh - N_pfree, 0))
 				N_bi = long(N_bi + r*N_bi + plyso*N_pfree)
 				N_pfree = long(max(N_pfree + a*(1-plyso)*N_pfree - (plyso)*N_pfree,0)*np.exp(-lambda_p))
 
-			if envp == 1 and envb == 1:
+			if envp == 0 and envb == 0:
 				
 				N_bh = long(max(N_bh + r*N_bh - N_pfree, 0))
 				N_bi = long((N_bi + plyso*N_pfree)*np.exp(-lambda_b))
