@@ -1,6 +1,6 @@
 # Lysogenic Propensity in Stressed Environments as a function of Muliplicity of Infection
 
-Description: Research project, undertaken with [Supreet Saini](www.che.iitb.ac.in/online/faculty/supreet-saini), [IIT Bombay](www.iitb.ac.in)
+Description: Research project, undertaken with [Supreet Saini](http://www.che.iitb.ac.in/online/faculty/supreet-saini), [IIT Bombay](http://www.iitb.ac.in)
 
 ## Introduction
 
