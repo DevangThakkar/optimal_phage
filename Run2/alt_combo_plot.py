@@ -19,10 +19,11 @@ folder1 = str(sys.argv[4])
 p1a = sys.argv[5] # 2nd phage environment
 p2a = sys.argv[6] # 2nd bacterial environment
 
+moi_range = 100
 
 # print p1, p2, p1a, p2a
-opt_plyso = [0.0 for x in xrange(100)]
-for x in xrange(100):
+opt_plyso = [0.0 for x in xrange(moi_range)]
+for x in xrange(moi_range):
 	# print x
 	fname = folder + '/p1_' + str(p1) + ',p2_' + str(p2) + '/moi_' + str(0.01*(x+1)) + '.csv'
 	with open(fname) as f:
@@ -39,10 +40,10 @@ for x in xrange(100):
 
 # print opt_plyso
 plt.ylim(0,1)
-plt.plot(np.array([0.01*(x+1) for x in xrange(100)]),opt_plyso, 'r')
+plt.plot(np.array([0.01*(x+1) for x in xrange(moi_range)]),opt_plyso, 'r')
 
-opt_plyso1 = [0.0 for x in xrange(100)]
-for x in xrange(100):
+opt_plyso1 = [0.0 for x in xrange(moi_range)]
+for x in xrange(moi_range):
 	# print x
 	fname1 = folder1 + '/p1_' + str(p1a) + ',p2_' + str(p2a) + '/moi_' + str(0.01*(x+1)) + '.csv'
 	with open(fname1) as f1:
@@ -54,12 +55,13 @@ for x in xrange(100):
 			# print final_moi
 			if np.abs(1- final_moi1) < diff1:
 				opt_plyso1[x] = plyso1
-				# print "new opt", plyso
+				# print "new opt", plyso1
 				diff1 = np.abs(1 - final_moi1)
 
 plt.ylim(0,1)
-plt.plot(np.array([0.01*(x+1) for x in xrange(100)]),opt_plyso1, 'b')
-plt.suptitle('r - ' + folder +'/p1:'+str(p1)+',p2:'+str(p2)+'= '+str(np.trapz(opt_plyso, np.array([0.01*(x+1) for x in xrange(100)])))+';    b - ' + folder1 + '/p1:'+str(p1a)+',p2:'+str(p2a)+'= '+str(np.trapz(opt_plyso1, np.array([0.01*(x+1) for x in xrange(100)]))))
+plt.plot(np.array([0.01*(x+1) for x in xrange(moi_range)]),opt_plyso1, 'b')
+plt.suptitle('r - ' + folder +'/p1:'+str(p1)+',p2:'+str(p2)+'= '+str(np.trapz(opt_plyso, np.array([0.01*(x+1) for x in xrange(moi_range)])))+';    b - ' + folder1 + '/p1:'+str(p1a)+',p2:'+str(p2a)+'= '+str(np.trapz(opt_plyso1, np.array([0.01*(x+1) for x in xrange(moi_range)]))))
+# plt.suptitle('p1=0.9, p2=0.1')
 
 directory = 'graphs'
 if not os.path.exists(directory):

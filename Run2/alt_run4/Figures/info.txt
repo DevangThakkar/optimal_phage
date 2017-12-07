@@ -1,2 +1,3 @@
 lambda_p = 3
 lambda_b = 0.1
+moi = 0.01 to 2

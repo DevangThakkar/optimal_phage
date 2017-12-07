@@ -1,11 +1,13 @@
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import os
 import sys
 
 #####
 # Warning: 
-# 1) This script eeds alt_script.py to be run first in order to have the moi folders
+# 1) This script needs alt_script.py to be run first in order to have the moi folders
 # 2) Ensure correct directory names below before run
 #
 # Usage: python alt_plot.py <arg1> <arg2>
@@ -16,12 +18,12 @@ import sys
 p1 = sys.argv[1] # phage environment
 p2 = sys.argv[2] # bacterial environment
 
-# print p1, p2
+moi_range = 100
 # Ensure correct directory name before run
 base_folder = 'alt_run'
 
-opt_plyso = [0.0 for x in xrange(100)]
-for x in xrange(100):
+opt_plyso = [0.0 for x in xrange(moi_range)]
+for x in xrange(moi_range):
 	# print x
 	fname = base_folder+'/p1_' + str(p1) + ',p2_' + str(p2) + '/moi_' + str(0.01*(x+1)) + '.csv'
 	with open(fname) as f:
@@ -38,11 +40,11 @@ for x in xrange(100):
 
 # print opt_plyso
 plt.ylim(0,1)
-plt.plot(np.array([0.01*(x+1) for x in xrange(100)]),opt_plyso)
-plt.suptitle(str(np.trapz(opt_plyso, np.array([0.01*(x+1) for x in xrange(100)]))))
+plt.plot(np.array([0.01*(x+1) for x in xrange(moi_range)]),opt_plyso)
+plt.suptitle(str(np.trapz(opt_plyso, np.array([0.01*(x+1) for x in xrange(moi_range)]))))
 
 # change directory name before run
-directory = base_folder+'/Figures'
+directory = base_folder+'/Figures1'
 if not os.path.exists(directory):
 	os.makedirs(directory)
 

@@ -17,10 +17,10 @@ import time
 import sys
 start_time = time.time()
 
-iterations = 1000 # number of times the code runs for each value of MoI
+iterations = 1000 # number of times the code runs for each value of MoI - use 1000 generally, 2000 if needed
 
-moi_range = [x*0.01 for x in xrange(1,101)] # MoI between 0.01 and 1 
-plyso_range = [x*0.005 for x in xrange(1,201)] # plyso between 0.005 and 1 
+moi_range = [x*0.01 for x in xrange(1,201)] # MoI between 0.01 and 2 
+plyso_range = [x*0.01 for x in xrange(1,101)] # plyso between 0.01 and 1 
 
 p1 = float(sys.argv[1]) # phage environment
 p2 = float(sys.argv[2]) # bacterial environment
@@ -28,7 +28,7 @@ p2 = float(sys.argv[2]) # bacterial environment
 r = 1 # bacterial steady growth
 a = 10 # amplification factor(burst size)
 
-lambda_p = 2 # degradation factor for phage - phage die
+lambda_p = 1 # degradation factor for phage - phage die
 lambda_b = 0.1 # degradation factor for bacteria - bacteria die and lysed bacteria are released as free phages
 
 moi_arr = [0.0 for x in xrange(iterations)]
@@ -61,30 +61,31 @@ for moi in moi_range:
 
 			if envp == 1 and envb == 1:
 				
-				N_bh = long(max(N_bh + r*N_bh - N_pfree, 0))
+				N_bh = long(max(N_bh + r*N_bh - N_pfree, 0)) #assume all phages affect one bacterium each (for now)
 				N_bi = long(N_bi + r*N_bi + plyso*N_pfree)
 				N_pfree = long(max(N_pfree + a*(1-plyso)*N_pfree - (plyso)*N_pfree, 0))
 
 			if envp == 1 and envb == 0:
 				
 				N_bh = long(max(N_bh + r*N_bh - N_pfree, 0))
-				N_bi = long((N_bi + plyso*N_pfree)*np.exp(-lambda_b))
-				N_pfree = long(max(N_pfree + a*(1-plyso)*N_pfree + 1 * (N_bi + plyso*N_pfree)*np.exp(-lambda_b) - (plyso)*N_pfree,0))
+				N_bi_temp = long((N_bi + plyso*N_pfree)*np.exp(-lambda_b))
+				N_pfree = long(max(N_pfree + a*(1-plyso)*N_pfree - (plyso)*N_pfree, 0))
+				N_bi = N_bi_temp
 
-			if envp == 1 and envb == 1:
+			if envp == 0 and envb == 1:
 				
 				N_bh = long(max(N_bh + r*N_bh - N_pfree, 0))
 				N_bi = long(N_bi + r*N_bi + plyso*N_pfree)
 				N_pfree = long(max(N_pfree + a*(1-plyso)*N_pfree - (plyso)*N_pfree,0)*np.exp(-lambda_p))
 
-			if envp == 1 and envb == 1:
+			if envp == 0 and envb == 0:
 				
 				N_bh = long(max(N_bh + r*N_bh - N_pfree, 0))
 				N_bi = long((N_bi + plyso*N_pfree)*np.exp(-lambda_b))
-				N_pfree = long(max(N_pfree + a*(1-plyso)*N_pfree + (N_bi + plyso*N_pfree)*np.exp(-lambda_b) - (plyso)*N_pfree,0)*np.exp(-lambda_p))
+				N_pfree = long(max(N_pfree + a*(1-plyso)*N_pfree - (plyso)*N_pfree,0)*np.exp(-lambda_p))
 
 			# update moi
-			moi_arr[x] = (1.0*N_pfree/(N_bh+1))
+			moi_arr[x] = (1.0*(N_pfree+N_bi)/(N_bh+N_bi+1))
 
 		# calculate mean moi over all iterations
 		mean_moi = np.mean(moi_arr)

@@ -21,9 +21,10 @@ folder1 = str(sys.argv[4])
 
 folder2 = str(sys.argv[5])
 
+moi_range = 100
 # print p1, p2, p1a, p2a
-opt_plyso = [0.0 for x in xrange(100)]
-for x in xrange(100):
+opt_plyso = [0.0 for x in xrange(moi_range)]
+for x in xrange(moi_range):
 	# print x
 	fname = folder + '/p1_' + str(p1) + ',p2_' + str(p2) + '/moi_' + str(0.01*(x+1)) + '.csv'
 	with open(fname) as f:
@@ -40,10 +41,10 @@ for x in xrange(100):
 
 # print opt_plyso
 plt.ylim(0,1)
-plt.plot(np.array([0.01*(x+1) for x in xrange(100)]),opt_plyso, 'r')
+plt.plot(np.array([0.01*(x+1) for x in xrange(moi_range)]),opt_plyso, 'r')
 
-opt_plyso1 = [0.0 for x in xrange(100)]
-for x in xrange(100):
+opt_plyso1 = [0.0 for x in xrange(moi_range)]
+for x in xrange(moi_range):
 	# print x
 	fname1 = folder1 + '/p1_' + str(p1a) + ',p2_' + str(p2a) + '/moi_' + str(0.01*(x+1)) + '.csv'
 	with open(fname1) as f1:
@@ -59,10 +60,10 @@ for x in xrange(100):
 				diff1 = np.abs(1 - final_moi1)
 
 plt.ylim(0,1)
-plt.plot(np.array([0.01*(x+1) for x in xrange(100)]),opt_plyso1, 'b')
+plt.plot(np.array([0.01*(x+1) for x in xrange(moi_range)]),opt_plyso1, 'b')
 
-opt_plyso2 = [0.0 for x in xrange(100)]
-for x in xrange(100):
+opt_plyso2 = [0.0 for x in xrange(moi_range)]
+for x in xrange(moi_range):
 	# print x
 	fname2 = folder2 + '/p1_' + str(p1b) + ',p2_' + str(p2b) + '/moi_' + str(0.01*(x+1)) + '.csv'
 	with open(fname2) as f2:
@@ -78,16 +79,18 @@ for x in xrange(100):
 				diff2 = np.abs(1 - final_moi2)
 
 plt.ylim(0,1)
-plt.plot(np.array([0.01*(x+1) for x in xrange(100)]),opt_plyso2, 'g')
+plt.plot(np.array([0.01*(x+1) for x in xrange(moi_range)]),opt_plyso2, 'g')
 
 
-plt.suptitle('p1' + str(p1a) + ', p2' + str(p2a) + ':    r - ' + folder + '= '+str(np.trapz(opt_plyso, np.array([0.01*(x+1) for x in xrange(100)])))+';    b - ' + folder1 +'= '+str(np.trapz(opt_plyso1, np.array([0.01*(x+1) for x in xrange(100)])))+';    g - ' + folder2 + '= '+str(np.trapz(opt_plyso1, np.array([0.01*(x+1) for x in xrange(100)]))))
+plt.suptitle('p1' + str(p1a) + ', p2' + str(p2a) + ':    r - ' + folder + '= '+str(np.trapz(opt_plyso, np.array([0.01*(x+1) for x in xrange(moi_range)])))+';    b - ' + folder1 +'= '+str(np.trapz(opt_plyso1, np.array([0.01*(x+1) for x in xrange(moi_range)])))+';    g - ' + folder2 + '= '+str(np.trapz(opt_plyso1, np.array([0.01*(x+1) for x in xrange(moi_range)]))))
+# plt.suptitle('p1=0.9, p2=0.1')
 
-directory = 'graph'
+directory = 'graphs'
 if not os.path.exists(directory):
 	os.makedirs(directory)
-print folder
-imagefile = directory + '/' + 'p1_' + str(p1) + ',p2_' + str(p2) + '-' + folder + ',' + folder1 + ', ' + folder2 + '.png'
+# print folder
+imagefile = directory + '/' + 'p1_' + str(p1) + ',p2_' + str(p2) + '-' + folder + ',' + folder1 + ',' + folder2 + '.png'
+# print imagefile
 if os.path.exists(imagefile):
 	os.remove(imagefile)
 
